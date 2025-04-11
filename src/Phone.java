@@ -2,6 +2,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Phone extends ImageView {
+    static int rotate = 90;
 
     public Phone() {
         super(new Image("file:images/phone.png"));
@@ -16,7 +17,7 @@ public class Phone extends ImageView {
         arrow.setFitHeight(35);
         arrow.setX(85);
         arrow.setY(583);
-
+        arrow.setRotate(rotate);
         return arrow;
     }
 }

@@ -1,13 +1,17 @@
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.util.Optional;
@@ -25,14 +29,11 @@ public class Main extends Application {
     static AnchorPane ap2 = new AnchorPane();
     static AnchorPane ap3 = new AnchorPane();
     static AnchorPane ap4 = new AnchorPane();
-    static AnchorPane ap5 = new AnchorPane();
-    static AnchorPane ap6 = new AnchorPane();
 
     static final int WIDTH = 1200;
     static final int HEIGHT = 800;
     static Stage stage;
-
-    static Scene startScene;
+    static Timeline timeline = new Timeline();
 
     public static void main(String[] args) {
         launch(args);
@@ -49,8 +50,6 @@ public class Main extends Application {
 
     public void Scene1() {
 
-        startScene = new Scene(ap1, WIDTH, HEIGHT);
-
         ImageView wyjdzZGry = new ImageView(new Image("file:images/wyjdzZGry.png"));
         wyjdzZGry.setLayoutX(1050);
         wyjdzZGry.setLayoutY(7);
@@ -64,8 +63,6 @@ public class Main extends Application {
         musicOnOffButton.setFitWidth(90);
         musicOnOffButton.setFitHeight(40);
         isMusicOn = true;
-
-        Player player = new Player(100,100);
 
         musicOnOffButton.setOnMouseClicked(event -> {
             if(isMusicOn == false){
@@ -81,11 +78,9 @@ public class Main extends Application {
         });
         Phone phone = new Phone();
         ImageView arrow = phone.Arrow();
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, arrow, player);
-        //ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, player);
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, arrow);
 
-
-
+        Scene startScene = new Scene(ap1, WIDTH, HEIGHT);
 //        startScene.setOnMouseClicked(event -> {
 //            double sceneX = event.getSceneX(); // X relative to the scene
 //            double sceneY = event.getSceneY();
@@ -94,6 +89,23 @@ public class Main extends Application {
 //        });
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(16), e -> {
+            startScene.setOnKeyPressed((KeyEvent event) -> {
+                switch (event.getCode()) {
+                    case LEFT:
+                        Phone.rotate -= 10;
+                        arrow.setRotate(Phone.rotate);
+                        break;
+                    case RIGHT:
+                        Phone.rotate += 10;
+                        break;
+                    default:
+                        System.out.println("Other key pressed: " + event.getCode());
+                }
+            });
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
 
 
         wyjdzZGry.setOnMouseClicked(event -> {
