@@ -10,4 +10,13 @@ public class Phone extends ImageView {
         setX(10);
         setY(Main.HEIGHT - 298);
     }
+    public ImageView Arrow(){
+        ImageView arrow = new ImageView(new Image("file:images/redArrow.png"));
+        arrow.setFitWidth(62);
+        arrow.setFitHeight(35);
+        arrow.setX(85);
+        arrow.setY(583);
+
+        return arrow;
+    }
 }

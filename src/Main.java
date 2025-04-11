@@ -57,6 +57,7 @@ public class Main extends Application {
         wyjdzZGry.setFitHeight(40);
         wyjdzZGry.setFitWidth(140);
 
+
         ImageView musicOnOffButton = new ImageView(musicOn);
         musicOnOffButton.setLayoutX(952);
         musicOnOffButton.setLayoutY(7);
@@ -79,11 +80,21 @@ public class Main extends Application {
             }
         });
         Phone phone = new Phone();
+        ImageView arrow = phone.Arrow();
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, arrow);
         ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, player);
 
 
+        Scene startScene = new Scene(ap1, WIDTH, HEIGHT);
+//        startScene.setOnMouseClicked(event -> {
+//            double sceneX = event.getSceneX(); // X relative to the scene
+//            double sceneY = event.getSceneY();
+//            System.out.println(sceneX);
+//            System.out.println(sceneY);
+//        });
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
+
 
         wyjdzZGry.setOnMouseClicked(event -> {
             handleExitGame(stage);
@@ -102,6 +113,27 @@ public class Main extends Application {
             stageMenu.close();
         } else {
             alert.close();
+        }
+    }
+
+    public static void playerPositionUpdate(int xPlayer, int yPlayer){
+        if (stage.getScene().getRoot().toString().equals("ap1")){
+            System.out.println("this bitch");
+        }
+        else if (stage.getScene().getRoot().toString().equals("ap2")){
+
+        }
+        else if (stage.getScene().getRoot().toString().equals("ap3")){
+
+        }
+        else if (stage.getScene().getRoot().toString().equals("ap4")){
+
+        }
+        else if (stage.getScene().getRoot().toString().equals("ap5")){
+
+        }
+        else if (stage.getScene().getRoot().toString().equals("ap6")){
+
         }
     }
 }

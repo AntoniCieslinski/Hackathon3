@@ -1,6 +1,6 @@
 import javafx.scene.image.ImageView;
 
-public class Sheep {
+public class Sheep extends ImageView{
     int x;
     int y;
     int mapPart;
@@ -20,7 +20,9 @@ public class Sheep {
 
 
 
+
     public static void detectPlayer(){
+
 
     }
 }
