@@ -41,6 +41,10 @@ public class Main extends Application {
 
     static Scene startScene;
 
+    static Phone phone = new Phone();
+
+    static ImageView arrow = phone.Arrow();
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -101,8 +105,8 @@ public class Main extends Application {
                 mediaPlayerStarter.setMute(false);
             }
         });
-        Phone phone = new Phone();
-        ImageView arrow = phone.Arrow();
+
+
         ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, arrow, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4);
 
         Scene startScene = new Scene(ap1, WIDTH, HEIGHT);
