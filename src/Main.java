@@ -131,7 +131,6 @@ public class Main extends Application {
         });
         phone.RotateArrow(player.getX(), player.getY(), cyberdomek1.getX(), cyberdomek1.getY());
 
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
 
         startScene = new Scene(ap1, WIDTH, HEIGHT);
         stage.setTitle("Ekran główny");
@@ -194,7 +193,7 @@ public class Main extends Application {
                 dPressed = false;
                 aPressed = false;
             }
-            changeMap2();
+            changeMap();
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
@@ -222,12 +221,11 @@ public class Main extends Application {
         }
     }
 
-    public static void playerPositionUpdate(int xPlayer, int yPlayer) {
-        if (stage.getScene().getRoot().equals(ap1)) {
-        } else if (stage.getScene().getRoot().equals(ap2)) {
-        } else if (stage.getScene().getRoot().equals(ap3)) {
-        } else if (stage.getScene().getRoot().equals(ap4)) {
-    public static void changeMap2(){
+    public static void changeMap(){
+
+        //dodać małą mapke zeby wiedziec gdzie jestesmy
+        // adjust to player width/height zeby bylo idealnie
+
         //mapa 1 jesteśmy
 
         if(whichMap == 1){
@@ -235,16 +233,17 @@ public class Main extends Application {
             map.setImage(map1);
             //zmiana na map 2
             if(player.imageView.getX() > WIDTH){
-
                 whichMap = 2;
                 System.out.println("change to map 2");
                 map.setImage(map2);
+                player.imageView.setX(0);
             }
             //zmiana na map4
             if(player.imageView.getY() < 0){
                 whichMap = 4;
                 System.out.println("change to map 4");
                 map.setImage(map4);
+                player.imageView.setY(HEIGHT);
             }
         }
         //mapa 2 jesteśmy
@@ -254,11 +253,13 @@ public class Main extends Application {
             if(player.imageView.getX() < 0){
                 whichMap = 1;
                 map.setImage(map1);
+                player.imageView.setX(WIDTH);
             }
             //zmiana na map 3
             if(player.imageView.getY() < 0){
                 whichMap = 3;
                 map.setImage(map3);
+                player.imageView.setY(HEIGHT);
             }
         }
         //mapa 3 jesteśmy
@@ -268,11 +269,13 @@ public class Main extends Application {
             if(player.imageView.getY() > HEIGHT){
                 whichMap = 2;
                 map.setImage(map2);
+                player.imageView.setY(0);
             }
             //zmiana na map 4
             if(player.imageView.getX()< 0){
                 whichMap = 4;
                 map.setImage(map4);
+                player.imageView.setX(WIDTH);
             }
         }
 
@@ -283,76 +286,20 @@ public class Main extends Application {
             if(player.imageView.getY() > HEIGHT){
                 whichMap = 1;
                 map.setImage(map1);
+                player.imageView.setY(0);
             }
             //zmiana na map 3
             if(player.imageView.getX() > WIDTH){
                 whichMap = 3;
                 map.setImage(map3);
+                player.imageView.setX(0);
             }
         }
 
         map.setFitWidth(1200);
         map.setFitHeight(800);
-
-//        changeMap(player);
     }
 
-    public void changeMap(Player player){
-        //mapa 1 jesteśmy
-        if(whichMap == 1){
-            //zmiana na map 2
-            if(player.x > WIDTH){
-                whichMap = 2;
-                map = new ImageView(map2);
-            }
-            //zmiana na map4
-            if(player.y < 0){
-                whichMap = 4;
-                map = new ImageView(map4);
-            }
-        }
-        //mapa 2 jesteśmy
-        else if(whichMap == 2){
-            //zmiana na map 1
-            if(player.x < 0){
-                whichMap = 1;
-                map = new ImageView(map1);
-            }
-            //zmiana na map 3
-            if(player.y < 0){
-                whichMap = 3;
-                map = new ImageView(map3);
-            }
-        }
-        //mapa 3 jesteśmy
-        else if(whichMap == 3){
-            //zmiana na map 2
-            if(player.y > HEIGHT){
-                whichMap = 2;
-                map = new ImageView(map2);
-            }
-            //zmiana na map 4
-            if(player.x < 0){
-                whichMap = 4;
-                map = new ImageView(map4);
-            }
-        }
-
-        //mapa 4 jesteśmy
-        else if(whichMap == 4){
-            //zmiana na map 1
-            if(player.y > HEIGHT){
-                whichMap = 1;
-                map = new ImageView(map1);
-            }
-            //zmiana na map 3
-            if(player.x > WIDTH){
-                whichMap = 3;
-                map = new ImageView(map3);
-            }
-        }
-
-    }
 
     public static void playerPositionUpdate(int xPlayer, int yPlayer){
         if (stage.getScene().getRoot().equals(ap1)){
