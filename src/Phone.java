@@ -25,7 +25,7 @@ public class Phone extends ImageView {
         double opposite = targetY - playerY;
         double adjacent = targetX - playerX;
 
-        double angle = Math.atan(opposite/adjacent);
+        double angle = Math.atan2(opposite, adjacent);
         System.out.println(angle);
 
         Main.arrow.setRotate(Math.toDegrees(angle) +180);
