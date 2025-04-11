@@ -102,7 +102,7 @@ public class Main extends Application {
                 mediaPlayerStarter.setMute(false);
             }
         });
-        phone.RotateArrow(player.getX(), player.getY(), cyberdomek1.getX(), cyberdomek1.getY());
+
 
         ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
 
@@ -113,6 +113,7 @@ public class Main extends Application {
 
 
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(16), e -> {
+            phone.RotateArrow(player.imageView.getX(), player.imageView.getY(), cyberdomek1.getX(), cyberdomek1.getY());
             startScene.setOnKeyPressed(event -> {
                 if (event.getCode() == KeyCode.W) {
                     wPressed = true;
