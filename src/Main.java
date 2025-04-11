@@ -33,7 +33,7 @@ public class Main extends Application {
 
     static List<ImageView> cyberdomekList = new ArrayList<>();
 
-    static{
+    static {
         cyberdomekList.add(cyberdomek1);
         cyberdomekList.add(cyberdomek2);
         cyberdomekList.add(cyberdomek3);
@@ -78,22 +78,20 @@ public class Main extends Application {
     public void Scene1() {
 
 
-
-
-        cyberdomek1.setFitWidth(400);
-        cyberdomek1.setFitHeight(400);
+        cyberdomek1.setFitWidth(150);
+        cyberdomek1.setFitHeight(150);
         cyberdomek1.setX(650);
         cyberdomek1.setY(400);
-        cyberdomek2.setFitWidth(400);
-        cyberdomek2.setFitHeight(400);
+        cyberdomek2.setFitWidth(150);
+        cyberdomek2.setFitHeight(150);
         cyberdomek2.setX(800);
         cyberdomek2.setY(100);
-        cyberdomek3.setFitWidth(400);
-        cyberdomek3.setFitHeight(400);
+        cyberdomek3.setFitWidth(150);
+        cyberdomek3.setFitHeight(150);
         cyberdomek3.setX(400);
         cyberdomek3.setY(200);
-        cyberdomek4.setFitWidth(400);
-        cyberdomek4.setFitHeight(400);
+        cyberdomek4.setFitWidth(150);
+        cyberdomek4.setFitHeight(150);
         cyberdomek4.setX(100);
         cyberdomek4.setY(100);
 
@@ -113,7 +111,7 @@ public class Main extends Application {
         musicOnOffButton.setFitHeight(40);
 
         musicOnOffButton.setOnMouseClicked(event -> {
-            if(!isMusicOn){
+            if (!isMusicOn) {
                 musicOnOffButton.setImage(musicOff);
                 isMusicOn = true;
                 mediaPlayerStarter.setMute(true);
@@ -123,58 +121,69 @@ public class Main extends Application {
                 mediaPlayerStarter.setMute(false);
             }
         });
+        phone.RotateArrow(player.getX(), player.getY(), cyberdomek1.getX(), cyberdomek1.getY());
 
-
-
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry,  target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
 
         startScene = new Scene(ap1, WIDTH, HEIGHT);
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
-
-
+        startScene.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.W) {
+                wPressed = true;
+            }
+            if (event.getCode() == KeyCode.S) {
+                sPressed = true;
+            }
+            if (event.getCode() == KeyCode.A) {
+                aPressed = true;
+            }
+            if (event.getCode() == KeyCode.D) {
+                dPressed = true;
+            }
+        });
+        startScene.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.W) {
+                wPressed = false;
+            }
+            if (event.getCode() == KeyCode.S) {
+                sPressed = false;
+            }
+            if (event.getCode() == KeyCode.A) {
+                aPressed = false;
+            }
+            if (event.getCode() == KeyCode.D) {
+                dPressed = false;
+            }
+        });
 
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(16), e -> {
-            phone.RotateArrow(player.imageView.getX(), player.imageView.getY(), target.getCenterX(), target.getCenterY());
-            startScene.setOnKeyPressed(event -> {
-                if (event.getCode() == KeyCode.W) {
-                    wPressed = true;
-                } if (event.getCode() == KeyCode.S) {
-                    sPressed = true;
-                }
-                if (event.getCode() == KeyCode.A) {
-                    aPressed = true;
-                }
-                if (event.getCode() == KeyCode.D) {
-                    dPressed = true;
-                }
-            });
-            startScene.setOnKeyReleased(event -> {
-                if (event.getCode() == KeyCode.W){
-                    wPressed = false;
-                }
-                if (event.getCode() == KeyCode.S){
-                    sPressed = false;
-                }
-                if (event.getCode() == KeyCode.A){
-                    aPressed = false;
-                }
-                if (event.getCode() == KeyCode.D){
-                    dPressed = false;
-                }
+            int dy = 0;
+            int dx = 0;
 
-            });
-            if (wPressed){
-                player.imageView.setY(player.imageView.getY() - 2);
+            if (wPressed) {
+                dy = -2;
             }
-            if (sPressed){
-                player.imageView.setY(player.imageView.getY() + 2);
+            if (sPressed) {
+                dy = 2;
             }
-            if (dPressed){
-                player.imageView.setX(player.imageView.getX() + 2);
+            if (dPressed) {
+                dx = +2;
             }
-            if (aPressed){
-                player.imageView.setX(player.imageView.getX() - 2);
+            if (aPressed) {
+                dx = -2;
+            }
+            player.imageView.setX(player.imageView.getX() + dx);
+            player.imageView.setY(player.imageView.getY() + dy);
+
+
+            if (player.imageView.intersects(cyberdomek1.getBoundsInParent()) || player.imageView.intersects(cyberdomek2.getBoundsInParent()) || player.imageView.intersects(cyberdomek3.getBoundsInParent()) || player.imageView.intersects(cyberdomek4.getBoundsInParent())) {
+                player.imageView.setX(player.imageView.getX() - dx);
+                player.imageView.setY(player.imageView.getY() - dy);
+                wPressed = false;
+                sPressed = false;
+                dPressed = false;
+                aPressed = false;
             }
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -201,13 +210,11 @@ public class Main extends Application {
         }
     }
 
-    public static void playerPositionUpdate(int xPlayer, int yPlayer){
-        if (stage.getScene().getRoot().equals(ap1)){
-        } else if (stage.getScene().getRoot().equals(ap2)){
-        } else if (stage.getScene().getRoot().equals(ap3)){
-        } else if (stage.getScene().getRoot().equals(ap4)){
+    public static void playerPositionUpdate(int xPlayer, int yPlayer) {
+        if (stage.getScene().getRoot().equals(ap1)) {
+        } else if (stage.getScene().getRoot().equals(ap2)) {
+        } else if (stage.getScene().getRoot().equals(ap3)) {
+        } else if (stage.getScene().getRoot().equals(ap4)) {
         }
     }
-
-
 }
