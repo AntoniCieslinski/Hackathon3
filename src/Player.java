@@ -7,8 +7,8 @@ import javafx.util.Duration;
 
 public class Player extends ImageView {
 
-    int x;
-    int y;
+    public int x;
+    public int y;
     boolean isDown;
 
     static Image imageView = new Image("file:images/phone.png");

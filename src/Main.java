@@ -49,7 +49,6 @@ public class Main extends Application {
         mediaPlayerStarter.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayerStarter.play();
         Player player = new Player(20, 20);
-        
         playerPositionUpdate(player.x, player.y);
     }
 
@@ -135,7 +134,9 @@ public class Main extends Application {
 
     public static void playerPositionUpdate(int xPlayer, int yPlayer){
         if (stage.getScene().getRoot().toString().equals("ap1")){
-            System.out.println("this bitch");
+            if (xPlayer >= 1200) startScene.setRoot(ap2);
+//            if (xPlayer <= 0) player.
+//            System.out.println("this bitch");
         }
         else if (stage.getScene().getRoot().toString().equals("ap2")){
 
@@ -144,12 +145,6 @@ public class Main extends Application {
 
         }
         else if (stage.getScene().getRoot().toString().equals("ap4")){
-
-        }
-        else if (stage.getScene().getRoot().toString().equals("ap5")){
-
-        }
-        else if (stage.getScene().getRoot().toString().equals("ap6")){
 
         }
     }
