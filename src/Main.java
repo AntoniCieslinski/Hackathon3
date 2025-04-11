@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -36,7 +37,10 @@ public class Main extends Application {
     static Timeline timeline = new Timeline();
     static Scene startScene;
     private Player player;
-
+    static boolean wPressed = false;
+    static boolean sPressed = false;
+    static boolean dPressed = false;
+    static boolean aPressed = false;
     static Phone phone = new Phone();
 
     static ImageView arrow = phone.Arrow();
@@ -110,27 +114,52 @@ public class Main extends Application {
 
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(16), e -> {
             startScene.setOnKeyPressed(event -> {
-                if (player != null) {
-                    switch (event.getCode()) {
-                        case W:
-                            player.imageView.setY(player.getY() - 5);
-                            System.out.println("super");
-                            break;
-                        case S:
-                            player.imageView.setY(player.getY() + 5);
-                            break;
-                        case A:
-                            player.imageView.setX(player.getX() - 5);
-                            break;
-                        case D:
-                            player.imageView.setX(player.getX() + 5);
-                            break;
-                    }
+                if (event.getCode() == KeyCode.W) {
+                    wPressed = true;
+                } if (event.getCode() == KeyCode.S) {
+                    sPressed = true;
+                }
+                if (event.getCode() == KeyCode.A) {
+                    aPressed = true;
+                }
+                if (event.getCode() == KeyCode.D) {
+                    dPressed = true;
                 }
             });
+            startScene.setOnKeyReleased(event -> {
+                if (event.getCode() == KeyCode.W){
+                    wPressed = false;
+                }
+                if (event.getCode() == KeyCode.S){
+                    sPressed = false;
+                }
+                if (event.getCode() == KeyCode.A){
+                    aPressed = false;
+                }
+                if (event.getCode() == KeyCode.D){
+                    dPressed = false;
+                }
+
+            });
+            if (wPressed){
+                player.imageView.setY(player.imageView.getY() - 2);
+            }
+            if (sPressed){
+                player.imageView.setY(player.imageView.getY() + 2);
+            }
+            if (dPressed){
+                player.imageView.setX(player.imageView.getX() + 2);
+            }
+            if (aPressed){
+                player.imageView.setX(player.imageView.getX() - 2);
+            }
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+
+        stage.setTitle("Ekran główny");
+        stage.setScene(startScene);
+
 
         wyjdzZGry.setOnMouseClicked(event -> handleExitGame(stage));
     }
