@@ -37,6 +37,10 @@ public class Main extends Application {
     static Scene startScene;
     private Player player;
 
+    static Phone phone = new Phone();
+
+    static ImageView arrow = phone.Arrow();
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -95,7 +99,7 @@ public class Main extends Application {
             }
         });
 
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView);
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
 
         startScene = new Scene(ap1, WIDTH, HEIGHT);
         stage.setTitle("Ekran główny");
