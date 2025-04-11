@@ -91,8 +91,6 @@ public class Main extends Application {
         musicOnOffButton.setFitWidth(90);
         musicOnOffButton.setFitHeight(40);
 
-        startScene = new Scene(ap1, WIDTH, HEIGHT);
-
         musicOnOffButton.setOnMouseClicked(event -> {
             if(!isMusicOn){
                 musicOnOffButton.setImage(musicOff);
@@ -158,9 +156,6 @@ public class Main extends Application {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
-
-
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView);
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
 
