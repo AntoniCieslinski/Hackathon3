@@ -45,7 +45,6 @@ public class Main extends Application {
         cyberdomekList.add(cyberdomek4);
     }
 
-
     static AnchorPane ap1 = new AnchorPane();
     static AnchorPane ap2 = new AnchorPane();
     static AnchorPane ap3 = new AnchorPane();
@@ -55,12 +54,21 @@ public class Main extends Application {
     static Stage stage;
     static Timeline timeline = new Timeline();
     static Scene startScene;
-    private Player player;
+    static Player player;
     static boolean wPressed = false;
     static boolean sPressed = false;
     static boolean dPressed = false;
     static boolean aPressed = false;
     static Phone phone = new Phone();
+
+    static int whichMap = 1;
+
+    static Image map1 = new Image("file:images/mapa/1.png");
+    static Image map2 = new Image("file:images/mapa/2.png");
+    static Image map3 = new Image("file:images/mapa/3.png");
+    static Image map4 = new Image("file:images/mapa/4.png");
+
+    static ImageView map = new ImageView(map1);
 
     static ImageView arrow = phone.Arrow();
 
@@ -129,7 +137,6 @@ public class Main extends Application {
         });
         phone.RotateArrow(player.getX(), player.getY(), cyberdomek1.getX(), cyberdomek1.getY());
 
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
 
         startScene = new Scene(ap1, WIDTH, HEIGHT);
         stage.setTitle("Ekran główny");
@@ -192,9 +199,12 @@ public class Main extends Application {
                 dPressed = false;
                 aPressed = false;
             }
+            changeMap();
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+
+        ap1.getChildren().addAll(map, musicOnOffButton, wyjdzZGry,  target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
 
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
@@ -217,11 +227,117 @@ public class Main extends Application {
         }
     }
 
-    public static void playerPositionUpdate(int xPlayer, int yPlayer) {
-        if (stage.getScene().getRoot().equals(ap1)) {
-        } else if (stage.getScene().getRoot().equals(ap2)) {
-        } else if (stage.getScene().getRoot().equals(ap3)) {
-        } else if (stage.getScene().getRoot().equals(ap4)) {
+    public static void changeMap(){
+        // adjust to player width/height zeby bylo idealnie
+
+        //mapa 1 jesteśmy
+
+        if(whichMap == 1){
+            map.setImage(map1);
+            //zmiana na map 2
+            if(player.imageView.getX() + player.imageView.getFitWidth() > WIDTH){
+                whichMap = 2;
+                map.setImage(map2);
+                player.imageView.setX(player.imageView.getFitWidth());
+            }
+            //zmiana na map4
+            if(player.imageView.getY()  < 0){
+                whichMap = 4;
+                System.out.println("change to map 4");
+                map.setImage(map4);
+                player.imageView.setY(HEIGHT - player.imageView.getFitHeight());
+            }
+
+            //nie wychodzenie
+            if(player.imageView.getX() <0){
+                player.imageView.setX(0);
+            }
+            if(player.imageView.getY() + player.imageView.getFitHeight() > HEIGHT){
+                player.imageView.setY(HEIGHT - player.imageView.getFitHeight());
+            }
+        }
+        //mapa 2 jesteśmy
+        else if(whichMap == 2){
+            map.setImage(map2);
+            //zmiana na map 1
+            if(player.imageView.getX() < 0){
+                whichMap = 1;
+                map.setImage(map1);
+                player.imageView.setX(WIDTH - player.imageView.getFitWidth() - 10);
+            }
+            //zmiana na map 3
+            if(player.imageView.getY() < 0){
+                whichMap = 3;
+                map.setImage(map3);
+                player.imageView.setY(HEIGHT - player.imageView.getFitHeight());
+            }
+            //nie wychodzenie
+            if(player.imageView.getX() + player.imageView.getFitWidth() > WIDTH){
+                player.imageView.setX(WIDTH - player.imageView.getFitWidth());
+            }
+            if(player.imageView.getY() + player.imageView.getFitHeight() > HEIGHT){
+                player.imageView.setY(HEIGHT - player.imageView.getFitHeight());
+            }
+        }
+        //mapa 3 jesteśmy
+        else if(whichMap == 3){
+            map.setImage(map3);
+            //zmiana na map 2
+            if(player.imageView.getY() + player.imageView.getFitHeight()> HEIGHT){
+                whichMap = 2;
+                map.setImage(map2);
+                player.imageView.setY( player.imageView.getFitHeight());
+            }
+            //zmiana na map 4
+            if(player.imageView.getX()< 0){
+                whichMap = 4;
+                map.setImage(map4);
+                player.imageView.setX(WIDTH - player.imageView.getFitWidth());
+            }
+
+            //nie wychodzenie
+            if(player.imageView.getX() + player.imageView.getFitWidth() > WIDTH){
+                player.imageView.setX(WIDTH - player.imageView.getFitWidth());
+            }
+            if(player.imageView.getY() < 0){
+                player.imageView.setY(0);
+            }
+
+        }
+        //mapa 4 jesteśmy >>>>
+        else if(whichMap == 4){
+            map.setImage(map4);
+            //zmiana na map 1
+            if(player.imageView.getY() + player.imageView.getFitHeight() > HEIGHT){
+                whichMap = 1;
+                map.setImage(map1);
+                player.imageView.setY(player.imageView.getFitHeight());
+            }
+            //zmiana na map 3
+            if(player.imageView.getX() + player.imageView.getFitWidth()> WIDTH){
+                whichMap = 3;
+                map.setImage(map3);
+                player.imageView.setX(player.imageView.getFitWidth());
+            }
+
+            //nie wychodzenie
+            if(player.imageView.getX() < 0){
+                player.imageView.setX(0);
+            }
+            if(player.imageView.getY() < 0){
+                player.imageView.setY(0);
+            }
+        }
+        map.setFitWidth(1200);
+        map.setFitHeight(800);
+    }
+
+
+    public static void playerPositionUpdate(int xPlayer, int yPlayer){
+        if (stage.getScene().getRoot().equals(ap1)){
+        } else if (stage.getScene().getRoot().equals(ap2)){
+        } else if (stage.getScene().getRoot().equals(ap3)){
+        } else if (stage.getScene().getRoot().equals(ap4)){
         }
     }
 
