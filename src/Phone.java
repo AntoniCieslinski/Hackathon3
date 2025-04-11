@@ -21,12 +21,14 @@ public class Phone extends ImageView {
         return arrow;
     }
 
-    public void RotateArrow(int playerX, int playerY, int targetX, int targetY){
-        int opposite = targetY - playerY;
-        int adjacent = targetX - playerX;
+    public void RotateArrow(double playerX, double playerY, double targetX, double targetY){
+        double opposite = targetY - playerY;
+        double adjacent = targetX - playerX;
 
         double angle = Math.atan(opposite/adjacent);
+        System.out.println(angle);
 
-        Main.arrow.setRotate(angle);
+        Main.arrow.setRotate(Math.toDegrees(angle) +180);
+        System.out.println(Main.arrow.getRotate());
     }
 }
