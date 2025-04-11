@@ -10,10 +10,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class Main extends Application {
@@ -27,6 +30,17 @@ public class Main extends Application {
     static ImageView cyberdomek2 = new ImageView(new Image("file:images/cyberDomek.png"));
     static ImageView cyberdomek3 = new ImageView(new Image("file:images/cyberDomek.png"));
     static ImageView cyberdomek4 = new ImageView(new Image("file:images/cyberDomek.png"));
+
+    static List<ImageView> cyberdomekList = new ArrayList<>();
+
+    static{
+        cyberdomekList.add(cyberdomek1);
+        cyberdomekList.add(cyberdomek2);
+        cyberdomekList.add(cyberdomek3);
+        cyberdomekList.add(cyberdomek4);
+    }
+
+
     static AnchorPane ap1 = new AnchorPane();
     static AnchorPane ap2 = new AnchorPane();
     static AnchorPane ap3 = new AnchorPane();
@@ -62,6 +76,10 @@ public class Main extends Application {
     }
 
     public void Scene1() {
+
+
+
+
         cyberdomek1.setFitWidth(400);
         cyberdomek1.setFitHeight(400);
         cyberdomek1.setX(650);
@@ -78,6 +96,9 @@ public class Main extends Application {
         cyberdomek4.setFitHeight(400);
         cyberdomek4.setX(100);
         cyberdomek4.setY(100);
+
+        Target target = new Target();
+        target.setTargetToRandom(cyberdomekList);
 
         ImageView wyjdzZGry = new ImageView(new Image("file:images/wyjdzZGry.png"));
         wyjdzZGry.setLayoutX(1050);
@@ -104,7 +125,8 @@ public class Main extends Application {
         });
 
 
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
+
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry,  target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
 
         startScene = new Scene(ap1, WIDTH, HEIGHT);
         stage.setTitle("Ekran główny");
@@ -113,7 +135,7 @@ public class Main extends Application {
 
 
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(16), e -> {
-            phone.RotateArrow(player.imageView.getX(), player.imageView.getY(), cyberdomek1.getX(), cyberdomek1.getY());
+            phone.RotateArrow(player.imageView.getX(), player.imageView.getY(), target.getCenterX(), target.getCenterY());
             startScene.setOnKeyPressed(event -> {
                 if (event.getCode() == KeyCode.W) {
                     wPressed = true;
@@ -186,4 +208,6 @@ public class Main extends Application {
         } else if (stage.getScene().getRoot().equals(ap4)){
         }
     }
+
+
 }
