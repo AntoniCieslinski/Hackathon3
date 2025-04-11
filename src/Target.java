@@ -12,7 +12,9 @@ public class Target extends Rectangle {
         super();
         setWidth(400+2*offset);
         setHeight(400+2*offset);
-        setFill(Color.RED);
+         setFill(Color.RED);
+
+        //setOpacity(0);
 
     }
 
