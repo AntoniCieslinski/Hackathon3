@@ -6,7 +6,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -41,6 +40,9 @@ public class Main extends Application {
     static boolean sPressed = false;
     static boolean dPressed = false;
     static boolean aPressed = false;
+    static Phone phone = new Phone();
+
+    static ImageView arrow = phone.Arrow();
 
     public static void main(String[] args) {
         launch(args);
@@ -101,6 +103,12 @@ public class Main extends Application {
                 mediaPlayerStarter.setMute(false);
             }
         });
+
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
+
+        startScene = new Scene(ap1, WIDTH, HEIGHT);
+        stage.setTitle("Ekran główny");
+        stage.setScene(startScene);
 
 
 
