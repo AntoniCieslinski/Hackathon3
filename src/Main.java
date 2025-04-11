@@ -63,18 +63,18 @@ public class Main extends Application {
     public void Scene1() {
         cyberdomek1.setFitWidth(200);
         cyberdomek1.setFitHeight(200);
-        cyberdomek2.setFitWidth(200);
-        cyberdomek2.setFitHeight(200);
-        cyberdomek3.setFitWidth(200);
-        cyberdomek3.setFitHeight(200);
-        cyberdomek4.setFitWidth(200);
-        cyberdomek4.setFitHeight(200);
         cyberdomek1.setX(650);
         cyberdomek1.setY(400);
+        cyberdomek2.setFitWidth(200);
+        cyberdomek2.setFitHeight(200);
         cyberdomek2.setX(800);
         cyberdomek2.setY(100);
+        cyberdomek3.setFitWidth(200);
+        cyberdomek3.setFitHeight(200);
         cyberdomek3.setX(400);
         cyberdomek3.setY(200);
+        cyberdomek4.setFitWidth(200);
+        cyberdomek4.setFitHeight(200);
         cyberdomek4.setX(100);
         cyberdomek4.setY(100);
 
@@ -84,7 +84,6 @@ public class Main extends Application {
         wyjdzZGry.setFitHeight(40);
         wyjdzZGry.setFitWidth(140);
 
-
         ImageView musicOnOffButton = new ImageView(musicOn);
         musicOnOffButton.setLayoutX(952);
         musicOnOffButton.setLayoutY(7);
@@ -93,11 +92,10 @@ public class Main extends Application {
         isMusicOn = true;
 
         musicOnOffButton.setOnMouseClicked(event -> {
-            if(isMusicOn == false){
+            if(!isMusicOn){
                 musicOnOffButton.setImage(musicOff);
                 isMusicOn = true;
                 mediaPlayerStarter.setMute(true);
-
             } else {
                 musicOnOffButton.setImage(musicOn);
                 isMusicOn = false;
@@ -105,16 +103,9 @@ public class Main extends Application {
             }
         });
 
+//        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView);
 
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, arrow, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4);
-
-        Scene startScene = new Scene(ap1, WIDTH, HEIGHT);
-//        startScene.setOnMouseClicked(event -> {
-//            double sceneX = event.getSceneX(); // X relative to the scene
-//            double sceneY = event.getSceneY();
-//            System.out.println(sceneX);
-//            System.out.println(sceneY);
-//        });
+        startScene = new Scene(ap1, WIDTH, HEIGHT);
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(16), e -> {
@@ -135,10 +126,7 @@ public class Main extends Application {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
-
-        wyjdzZGry.setOnMouseClicked(event -> {
-            handleExitGame(stage);
-        });
+        wyjdzZGry.setOnMouseClicked(event -> handleExitGame(stage));
     }
 
     private static void handleExitGame(Stage stageMenu) {
@@ -146,7 +134,6 @@ public class Main extends Application {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Czy na pewno chcesz wyjść z gry?");
         alert.setTitle("");
-
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             stage.close();
@@ -157,19 +144,10 @@ public class Main extends Application {
     }
 
     public static void playerPositionUpdate(int xPlayer, int yPlayer){
-        if (stage.getScene().getRoot().toString().equals("ap1")){
-            if (xPlayer >= 1200) startScene.setRoot(ap2);
-//            if (xPlayer <= 0) player.
-//            System.out.println("this bitch");
-        }
-        else if (stage.getScene().getRoot().toString().equals("ap2")){
-
-        }
-        else if (stage.getScene().getRoot().toString().equals("ap3")){
-
-        }
-        else if (stage.getScene().getRoot().toString().equals("ap4")){
-
+        if (stage.getScene().getRoot().equals(ap1)){
+        } else if (stage.getScene().getRoot().equals(ap2)){
+        } else if (stage.getScene().getRoot().equals(ap3)){
+        } else if (stage.getScene().getRoot().equals(ap4)){
         }
     }
 }
