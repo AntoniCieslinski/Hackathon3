@@ -24,6 +24,10 @@ public class Main extends Application {
     static Image musicOff = new Image("file:images/muzyka0.png");
     static Image musicOn = new Image("file:images/muzyka1.png");
     static boolean isMusicOn = true;
+    static ImageView cyberdomek1 = new ImageView(new Image("file:images/cyberDomek.png"));
+    static ImageView cyberdomek2 = new ImageView(new Image("file:images/cyberDomek.png"));
+    static ImageView cyberdomek3 = new ImageView(new Image("file:images/cyberDomek.png"));
+    static ImageView cyberdomek4 = new ImageView(new Image("file:images/cyberDomek.png"));
 
     static AnchorPane ap1 = new AnchorPane();
     static AnchorPane ap2 = new AnchorPane();
@@ -53,6 +57,22 @@ public class Main extends Application {
     }
 
     public void Scene1() {
+        cyberdomek1.setFitWidth(200);
+        cyberdomek1.setFitHeight(200);
+        cyberdomek2.setFitWidth(200);
+        cyberdomek2.setFitHeight(200);
+        cyberdomek3.setFitWidth(200);
+        cyberdomek3.setFitHeight(200);
+        cyberdomek4.setFitWidth(200);
+        cyberdomek4.setFitHeight(200);
+        cyberdomek1.setX(650);
+        cyberdomek1.setY(400);
+        cyberdomek2.setX(800);
+        cyberdomek2.setY(100);
+        cyberdomek3.setX(400);
+        cyberdomek3.setY(200);
+        cyberdomek4.setX(100);
+        cyberdomek4.setY(100);
 
         ImageView wyjdzZGry = new ImageView(new Image("file:images/wyjdzZGry.png"));
         wyjdzZGry.setLayoutX(1050);
@@ -82,7 +102,7 @@ public class Main extends Application {
         });
         Phone phone = new Phone();
         ImageView arrow = phone.Arrow();
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, arrow);
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, arrow, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4);
 
         Scene startScene = new Scene(ap1, WIDTH, HEIGHT);
 //        startScene.setOnMouseClicked(event -> {
