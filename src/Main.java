@@ -53,6 +53,7 @@ public class Main extends Application {
         wyjdzZGry.setFitHeight(40);
         wyjdzZGry.setFitWidth(140);
 
+
         ImageView musicOnOffButton = new ImageView(musicOn);
         musicOnOffButton.setLayoutX(952);
         musicOnOffButton.setLayoutY(7);
@@ -73,11 +74,19 @@ public class Main extends Application {
             }
         });
         Phone phone = new Phone();
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone);
+        ImageView arrow = phone.Arrow();
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, arrow);
 
         Scene startScene = new Scene(ap1, WIDTH, HEIGHT);
+//        startScene.setOnMouseClicked(event -> {
+//            double sceneX = event.getSceneX(); // X relative to the scene
+//            double sceneY = event.getSceneY();
+//            System.out.println(sceneX);
+//            System.out.println(sceneY);
+//        });
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
+
 
         wyjdzZGry.setOnMouseClicked(event -> {
             handleExitGame(stage);
