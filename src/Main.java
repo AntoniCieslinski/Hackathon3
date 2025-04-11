@@ -81,11 +81,11 @@ public class Main extends Application {
         });
         Phone phone = new Phone();
         ImageView arrow = phone.Arrow();
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, arrow);
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, player);
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, arrow, player);
+        //ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, player);
 
 
-        Scene startScene = new Scene(ap1, WIDTH, HEIGHT);
+
 //        startScene.setOnMouseClicked(event -> {
 //            double sceneX = event.getSceneX(); // X relative to the scene
 //            double sceneY = event.getSceneY();
