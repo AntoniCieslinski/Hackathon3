@@ -143,7 +143,7 @@ public class Main extends Application {
         }
     }
 
-    public static void playerPositionUpdate(int xPlayer, int yPlayer){
+    public static void playerPositionUpdate(double xPlayer, double yPlayer){
         if (stage.getScene().getRoot().equals(ap1)){
         } else if (stage.getScene().getRoot().equals(ap2)){
         } else if (stage.getScene().getRoot().equals(ap3)){
