@@ -32,6 +32,8 @@ public class Main extends Application {
     static final int HEIGHT = 800;
     static Stage stage;
 
+    static Scene startScene;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -47,6 +49,8 @@ public class Main extends Application {
 
     public void Scene1() {
 
+        startScene = new Scene(ap1, WIDTH, HEIGHT);
+
         ImageView wyjdzZGry = new ImageView(new Image("file:images/wyjdzZGry.png"));
         wyjdzZGry.setLayoutX(1050);
         wyjdzZGry.setLayoutY(7);
@@ -59,6 +63,8 @@ public class Main extends Application {
         musicOnOffButton.setFitWidth(90);
         musicOnOffButton.setFitHeight(40);
         isMusicOn = true;
+
+        Player player = new Player(100,100);
 
         musicOnOffButton.setOnMouseClicked(event -> {
             if(isMusicOn == false){
@@ -73,9 +79,9 @@ public class Main extends Application {
             }
         });
         Phone phone = new Phone();
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone);
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone, player);
 
-        Scene startScene = new Scene(ap1, WIDTH, HEIGHT);
+
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
 
