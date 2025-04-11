@@ -13,7 +13,6 @@ import java.io.File;
 import java.util.Optional;
 
 public class Main extends Application {
-
     static String musicFile1 = "farming.mp3";
     public static Media farmingMusic = new Media(new File(musicFile1).toURI().toString());
     public static MediaPlayer mediaPlayerStarter = new MediaPlayer(farmingMusic);
@@ -71,8 +70,8 @@ public class Main extends Application {
                 mediaPlayerStarter.setMute(false);
             }
         });
-
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry);
+        Phone phone = new Phone();
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone);
 
         Scene startScene = new Scene(ap1, WIDTH, HEIGHT);
         stage.setTitle("Ekran główny");
