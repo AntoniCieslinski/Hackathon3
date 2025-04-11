@@ -40,20 +40,19 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-        mainScene();
+        Scene1();
         stage.show();
         mediaPlayerStarter.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayerStarter.play();
     }
 
-    public void mainScene() {
-        AnchorPane rootMain = new AnchorPane();
+    public void Scene1() {
 
         ImageView wyjdzZGry = new ImageView(new Image("file:images/wyjdzZGry.png"));
         wyjdzZGry.setLayoutX(820);
         wyjdzZGry.setLayoutY(10);
-        wyjdzZGry.setFitHeight(80);
-        wyjdzZGry.setFitWidth(300);
+        wyjdzZGry.setFitHeight(50);
+        wyjdzZGry.setFitWidth(150);
 
         ImageView musicOnOffButton = new ImageView(musicOn);
         musicOnOffButton.setLayoutX(618);
@@ -73,9 +72,9 @@ public class Main extends Application {
             }
         });
 
-        rootMain.getChildren().addAll(musicOnOffButton, wyjdzZGry);
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry);
 
-        Scene startScene = new Scene(rootMain, WIDTH, HEIGHT);
+        Scene startScene = new Scene(ap1, WIDTH, HEIGHT);
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
 
