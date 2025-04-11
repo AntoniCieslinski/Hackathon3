@@ -222,28 +222,32 @@ public class Main extends Application {
     }
 
     public static void changeMap(){
-
-        //dodać małą mapke zeby wiedziec gdzie jestesmy
         // adjust to player width/height zeby bylo idealnie
 
         //mapa 1 jesteśmy
 
         if(whichMap == 1){
-            System.out.println(player.imageView.getX());
             map.setImage(map1);
             //zmiana na map 2
-            if(player.imageView.getX() > WIDTH){
+            if(player.imageView.getX() + player.imageView.getFitWidth() > WIDTH){
                 whichMap = 2;
-                System.out.println("change to map 2");
                 map.setImage(map2);
-                player.imageView.setX(0);
+                player.imageView.setX(player.imageView.getFitWidth());
             }
             //zmiana na map4
-            if(player.imageView.getY() < 0){
+            if(player.imageView.getY()  < 0){
                 whichMap = 4;
                 System.out.println("change to map 4");
                 map.setImage(map4);
-                player.imageView.setY(HEIGHT);
+                player.imageView.setY(HEIGHT - player.imageView.getFitHeight());
+            }
+
+            //nie wychodzenie
+            if(player.imageView.getX() <0){
+                player.imageView.setX(0);
+            }
+            if(player.imageView.getY() + player.imageView.getFitHeight() > HEIGHT){
+                player.imageView.setY(HEIGHT - player.imageView.getFitHeight());
             }
         }
         //mapa 2 jesteśmy
@@ -253,49 +257,71 @@ public class Main extends Application {
             if(player.imageView.getX() < 0){
                 whichMap = 1;
                 map.setImage(map1);
-                player.imageView.setX(WIDTH);
+                player.imageView.setX(WIDTH - player.imageView.getFitWidth() - 10);
             }
             //zmiana na map 3
             if(player.imageView.getY() < 0){
                 whichMap = 3;
                 map.setImage(map3);
-                player.imageView.setY(HEIGHT);
+                player.imageView.setY(HEIGHT - player.imageView.getFitHeight());
+            }
+            //nie wychodzenie
+            if(player.imageView.getX() + player.imageView.getFitWidth() > WIDTH){
+                player.imageView.setX(WIDTH - player.imageView.getFitWidth());
+            }
+            if(player.imageView.getY() + player.imageView.getFitHeight() > HEIGHT){
+                player.imageView.setY(HEIGHT - player.imageView.getFitHeight());
             }
         }
         //mapa 3 jesteśmy
         else if(whichMap == 3){
             map.setImage(map3);
             //zmiana na map 2
-            if(player.imageView.getY() > HEIGHT){
+            if(player.imageView.getY() + player.imageView.getFitHeight()> HEIGHT){
                 whichMap = 2;
                 map.setImage(map2);
-                player.imageView.setY(0);
+                player.imageView.setY( player.imageView.getFitHeight());
             }
             //zmiana na map 4
             if(player.imageView.getX()< 0){
                 whichMap = 4;
                 map.setImage(map4);
-                player.imageView.setX(WIDTH);
+                player.imageView.setX(WIDTH - player.imageView.getFitWidth());
             }
-        }
 
-        //mapa 4 jesteśmy
+            //nie wychodzenie
+            if(player.imageView.getX() + player.imageView.getFitWidth() > WIDTH){
+                player.imageView.setX(WIDTH - player.imageView.getFitWidth());
+            }
+            if(player.imageView.getY() < 0){
+                player.imageView.setY(0);
+            }
+
+        }
+        //mapa 4 jesteśmy >>>>
         else if(whichMap == 4){
             map.setImage(map4);
             //zmiana na map 1
-            if(player.imageView.getY() > HEIGHT){
+            if(player.imageView.getY() + player.imageView.getFitHeight() > HEIGHT){
                 whichMap = 1;
                 map.setImage(map1);
-                player.imageView.setY(0);
+                player.imageView.setY(player.imageView.getFitHeight());
             }
             //zmiana na map 3
-            if(player.imageView.getX() > WIDTH){
+            if(player.imageView.getX() + player.imageView.getFitWidth()> WIDTH){
                 whichMap = 3;
                 map.setImage(map3);
+                player.imageView.setX(player.imageView.getFitWidth());
+            }
+
+            //nie wychodzenie
+            if(player.imageView.getX() < 0){
                 player.imageView.setX(0);
             }
+            if(player.imageView.getY() < 0){
+                player.imageView.setY(0);
+            }
         }
-
         map.setFitWidth(1200);
         map.setFitHeight(800);
     }
