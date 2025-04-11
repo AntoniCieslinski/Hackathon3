@@ -123,7 +123,7 @@ public class Main extends Application {
         });
         phone.RotateArrow(player.getX(), player.getY(), cyberdomek1.getX(), cyberdomek1.getY());
 
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
 
         startScene = new Scene(ap1, WIDTH, HEIGHT);
         stage.setTitle("Ekran główny");

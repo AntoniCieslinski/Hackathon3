@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Target extends Rectangle {
 
-    int offset = 0;
+    int offset = 25;
 
     public Target() {
         super();
-        setWidth(400+2*offset);
-        setHeight(400+2*offset);
+        setWidth(150+2*offset);
+        setHeight(150+2*offset);
          setFill(Color.RED);
 
         //setOpacity(0);
