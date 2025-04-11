@@ -22,7 +22,9 @@ public class Sheep extends ImageView{
 
 
     public static void detectPlayer(){
-
-
+        //if player
+    }
+    public static void walk(int xPlayer, int yPlayer){
+        
     }
 }
