@@ -97,4 +97,25 @@ public class Main extends Application {
             alert.close();
         }
     }
+
+    public static void playerPositionUpdate(int xPlayer, int yPlayer){
+        if (stage.getScene().getRoot().toString().equals("ap1")){
+            System.out.println("this bitch");
+        }
+        else if (stage.getScene().getRoot().toString().equals("ap2")){
+
+        }
+        else if (stage.getScene().getRoot().toString().equals("ap3")){
+
+        }
+        else if (stage.getScene().getRoot().toString().equals("ap4")){
+
+        }
+        else if (stage.getScene().getRoot().toString().equals("ap5")){
+
+        }
+        else if (stage.getScene().getRoot().toString().equals("ap6")){
+
+        }
+    }
 }
