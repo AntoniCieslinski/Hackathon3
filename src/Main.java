@@ -13,7 +13,6 @@ import java.io.File;
 import java.util.Optional;
 
 public class Main extends Application {
-
     static String musicFile1 = "farming.mp3";
     public static Media farmingMusic = new Media(new File(musicFile1).toURI().toString());
     public static MediaPlayer mediaPlayerStarter = new MediaPlayer(farmingMusic);
@@ -49,14 +48,16 @@ public class Main extends Application {
     public void Scene1() {
 
         ImageView wyjdzZGry = new ImageView(new Image("file:images/wyjdzZGry.png"));
-        wyjdzZGry.setLayoutX(820);
-        wyjdzZGry.setLayoutY(10);
-        wyjdzZGry.setFitHeight(50);
-        wyjdzZGry.setFitWidth(150);
+        wyjdzZGry.setLayoutX(1050);
+        wyjdzZGry.setLayoutY(7);
+        wyjdzZGry.setFitHeight(40);
+        wyjdzZGry.setFitWidth(140);
 
         ImageView musicOnOffButton = new ImageView(musicOn);
-        musicOnOffButton.setLayoutX(618);
-        musicOnOffButton.setLayoutY(50);
+        musicOnOffButton.setLayoutX(952);
+        musicOnOffButton.setLayoutY(7);
+        musicOnOffButton.setFitWidth(90);
+        musicOnOffButton.setFitHeight(40);
         isMusicOn = true;
 
         musicOnOffButton.setOnMouseClicked(event -> {
@@ -71,8 +72,8 @@ public class Main extends Application {
                 mediaPlayerStarter.setMute(false);
             }
         });
-
-        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry);
+        Phone phone = new Phone();
+        ap1.getChildren().addAll(musicOnOffButton, wyjdzZGry, phone);
 
         Scene startScene = new Scene(ap1, WIDTH, HEIGHT);
         stage.setTitle("Ekran główny");
