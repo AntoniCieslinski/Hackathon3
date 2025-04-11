@@ -48,14 +48,16 @@ public class Main extends Application {
     public void Scene1() {
 
         ImageView wyjdzZGry = new ImageView(new Image("file:images/wyjdzZGry.png"));
-        wyjdzZGry.setLayoutX(820);
-        wyjdzZGry.setLayoutY(10);
-        wyjdzZGry.setFitHeight(50);
-        wyjdzZGry.setFitWidth(150);
+        wyjdzZGry.setLayoutX(1050);
+        wyjdzZGry.setLayoutY(7);
+        wyjdzZGry.setFitHeight(40);
+        wyjdzZGry.setFitWidth(140);
 
         ImageView musicOnOffButton = new ImageView(musicOn);
-        musicOnOffButton.setLayoutX(618);
-        musicOnOffButton.setLayoutY(50);
+        musicOnOffButton.setLayoutX(952);
+        musicOnOffButton.setLayoutY(7);
+        musicOnOffButton.setFitWidth(90);
+        musicOnOffButton.setFitHeight(40);
         isMusicOn = true;
 
         musicOnOffButton.setOnMouseClicked(event -> {
