@@ -35,6 +35,8 @@ public class Main extends Application {
     static Stage stage;
     static Timeline timeline = new Timeline();
 
+    static Scene startScene;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -46,6 +48,7 @@ public class Main extends Application {
         stage.show();
         mediaPlayerStarter.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayerStarter.play();
+
     }
 
     public void Scene1() {
