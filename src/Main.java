@@ -43,6 +43,8 @@ public class Main extends Application {
     static boolean aPressed = false;
     static Phone phone = new Phone();
 
+    int whichMap = 1;
+
     static ImageView arrow = phone.Arrow();
 
     public static void main(String[] args) {
