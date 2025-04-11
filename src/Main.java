@@ -50,23 +50,24 @@ public class Main extends Application {
         stage.show();
         mediaPlayerStarter.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayerStarter.play();
+        playerPositionUpdate((int) player.getX(), (int) player.getY());
     }
 
     public void Scene1() {
-        cyberdomek1.setFitWidth(200);
-        cyberdomek1.setFitHeight(200);
+        cyberdomek1.setFitWidth(400);
+        cyberdomek1.setFitHeight(400);
         cyberdomek1.setX(650);
         cyberdomek1.setY(400);
-        cyberdomek2.setFitWidth(200);
-        cyberdomek2.setFitHeight(200);
+        cyberdomek2.setFitWidth(400);
+        cyberdomek2.setFitHeight(400);
         cyberdomek2.setX(800);
         cyberdomek2.setY(100);
-        cyberdomek3.setFitWidth(200);
-        cyberdomek3.setFitHeight(200);
+        cyberdomek3.setFitWidth(400);
+        cyberdomek3.setFitHeight(400);
         cyberdomek3.setX(400);
         cyberdomek3.setY(200);
-        cyberdomek4.setFitWidth(200);
-        cyberdomek4.setFitHeight(200);
+        cyberdomek4.setFitWidth(400);
+        cyberdomek4.setFitHeight(400);
         cyberdomek4.setX(100);
         cyberdomek4.setY(100);
 
@@ -100,26 +101,29 @@ public class Main extends Application {
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
 
-        startScene.setOnKeyPressed(event -> {
-            if (player != null) {
-                switch (event.getCode()) {
-                    case W:
-                        player.setY(player.getY() - 5);
-                        break;
-                    case S:
-                        player.setY(player.getY() + 5);
-                        break;
-                    case A:
-                        player.setX(player.getX() - 5);
-                        break;
-                    case D:
-                        player.setX(player.getX() + 5);
-                        break;
-                }
-            }
-        });
 
-        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(16), e -> {}));
+
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(16), e -> {
+            startScene.setOnKeyPressed(event -> {
+                if (player != null) {
+                    switch (event.getCode()) {
+                        case W:
+                            player.imageView.setY(player.getY() - 5);
+                            System.out.println("super");
+                            break;
+                        case S:
+                            player.imageView.setY(player.getY() + 5);
+                            break;
+                        case A:
+                            player.imageView.setX(player.getX() - 5);
+                            break;
+                        case D:
+                            player.imageView.setX(player.getX() + 5);
+                            break;
+                    }
+                }
+            });
+        }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
