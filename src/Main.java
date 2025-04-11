@@ -341,11 +341,11 @@ public class Main extends Application {
         }
     }
 
-    public void generateCyberDomekPosition(){
-        double newX = Math.random()*1200;
-        double newY = Math.random()*800;
-
-        if ()
-
-    }
+//    public void generateCyberDomekPosition(){
+//        double newX = Math.random()*1200;
+//        double newY = Math.random()*800;
+//
+//        if ()
+//
+//    }
 }
