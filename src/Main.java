@@ -48,7 +48,9 @@ public class Main extends Application {
         stage.show();
         mediaPlayerStarter.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayerStarter.play();
-
+        Player player = new Player(20, 20);
+        
+        playerPositionUpdate(player.x, player.y);
     }
 
     public void Scene1() {
