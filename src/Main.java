@@ -71,6 +71,8 @@ public class Main extends Application {
     static Image map4 = new Image("file:images/mapa/4.png");
     static ImageView map = new ImageView(map1);
 
+    static Target target = new Target();
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -115,7 +117,7 @@ public class Main extends Application {
 //            cyberdomek4 = Main.cyberdomekList.get(3);
 //        }
 
-        Target target = new Target();
+
         target.setTargetToRandom(cyberdomekList);
 
         //owce dodawanie
@@ -270,6 +272,8 @@ public class Main extends Application {
                 cyberdomek3.setY(600);
                 cyberdomek4.setX(800);
                 cyberdomek4.setY(700);
+                target.setTargetToRandom(cyberdomekList);
+
                 System.out.println("change to map 4");
                 map.setImage(map4);
                 player.imageView.setY(HEIGHT - player.imageView.getFitHeight());
