@@ -193,6 +193,7 @@ public class Main extends Application {
 
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(16), e -> {
             phone.RotateArrow(player.imageView.getX(), player.imageView.getY(),target.getCenterX(), target.getCenterY());
+
             int dy = 0;
             int dx = 0;
 
@@ -221,6 +222,10 @@ public class Main extends Application {
                 aPressed = false;
             }
             changeMap();
+            owca1.detectPlayer(player);
+            owca2.detectPlayer(player);
+            owca3.detectPlayer(player);
+            owca4.detectPlayer(player);
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
