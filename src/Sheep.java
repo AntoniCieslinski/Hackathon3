@@ -73,11 +73,20 @@ public class Sheep extends ImageView{
 //        this.y = y;
 //    }
 
-    public void detectPlayer(){
+    public boolean detectPlayer(Player player){
+
+        if (this.getBoundsInLocal().intersects(player.imageView.getBoundsInLocal())){
+            System.out.println("Collision");
+            return true;
+
+        }
+
+        return false;
+
 //        if (Main.player.imageView.intersects()) {
 //            return;
 //        }
-        return;
+//        return;
 
 
     }
@@ -91,4 +100,7 @@ public class Sheep extends ImageView{
             steps = 0;
         }
     }
+
+
+
 }
