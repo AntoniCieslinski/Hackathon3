@@ -2,6 +2,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.Stack;
@@ -13,6 +15,12 @@ public class GraKorkowa {
     static Image korekoff = new Image("file:images/KorekOff.png");
 
     public static void Korki(){
+        Text text = new Text("Turn all red");
+        Font font = new Font("Arial", 100);
+        text.setX(Main.WIDTH/2-text.getBoundsInLocal().getWidth()/2);
+        text.setY(100);
+        text.setFont(font);
+        
         Stage stage = new Stage();
         Scene scene;
         AnchorPane root = new AnchorPane();

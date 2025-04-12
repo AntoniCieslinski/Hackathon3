@@ -17,11 +17,11 @@ public class CyberDomek extends ImageView {
         this.setFitHeight(150);
     }
 
-    public static void generateLocation(List<CyberDomek>){
-
-
-
-    }
+//    public static void generateLocation(List<CyberDomek>){
+//
+//
+//
+//    }
 
     public List<CyberDomek> generateTheFourDomki (){
         List<CyberDomek> list = new ArrayList<>();
