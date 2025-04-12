@@ -11,8 +11,8 @@ public class Player {
     public Player(double x, double y) {
         this.x = x;
         this.y = y;
-        imageView.setFitWidth(80);
-        imageView.setFitHeight(80);
+        imageView.setFitWidth(100);
+        imageView.setFitHeight(100);
     }
     public double getX() {
         return x;

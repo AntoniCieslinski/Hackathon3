@@ -10,12 +10,11 @@ public class Target extends Rectangle {
 
     public Target() {
         super();
-        setWidth(150+2*offset);
-        setHeight(150+2*offset);
+        setWidth(140+2*offset);
+        setHeight(140+2*offset);
          setFill(Color.RED);
 
         //setOpacity(0);
-
     }
 
     public void setTargetToRandom(List<CyberDomek> cyberdomekList){

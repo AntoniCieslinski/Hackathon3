@@ -93,7 +93,6 @@ public class Main extends Application {
 //        cyberdomek1.setFitHeight(150);
 //        cyberdomek1.setX(650);
 //        cyberdomek1.setY(400);
-//
 //        cyberdomek2.setFitWidth(150);
 //        cyberdomek2.setFitHeight(150);
 //        cyberdomek2.setX(800);
