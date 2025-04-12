@@ -13,6 +13,8 @@ public class Player {
         this.y = y;
         imageView.setFitWidth(100);
         imageView.setFitHeight(100);
+//        imageView.setLayoutX(400);
+//        imageView.setLayoutY(300);
     }
     public double getX() {
         return x;
