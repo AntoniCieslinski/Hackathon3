@@ -35,12 +35,12 @@ public class Main extends Application {
 //    static List<ImageView> cyberdomekList = new ArrayList<>();
 
     static List<CyberDomek> cyberdomekList = new ArrayList<>();
-//    static {
-//        cyberdomekList.add(cyberdomek1);
-//        cyberdomekList.add(cyberdomek2);
-//        cyberdomekList.add(cyberdomek3);
-//        cyberdomekList.add(cyberdomek4);
-//    }
+    static {
+        cyberdomekList.add(cyberdomek1);
+        cyberdomekList.add(cyberdomek2);
+        cyberdomekList.add(cyberdomek3);
+        cyberdomekList.add(cyberdomek4);
+    }
 
     static AnchorPane ap1 = new AnchorPane();
 
@@ -89,31 +89,31 @@ public class Main extends Application {
 
     public void Scene1() {
 
-//        cyberdomek1.setFitWidth(150);
-//        cyberdomek1.setFitHeight(150);
-//        cyberdomek1.setX(650);
-//        cyberdomek1.setY(400);
-//        cyberdomek2.setFitWidth(150);
-//        cyberdomek2.setFitHeight(150);
-//        cyberdomek2.setX(800);
-//        cyberdomek2.setY(100);
-//        cyberdomek3.setFitWidth(150);
-//        cyberdomek3.setFitHeight(150);
-//        cyberdomek3.setX(400);
-//        cyberdomek3.setY(200);
-//        cyberdomek4.setFitWidth(150);
-//        cyberdomek4.setFitHeight(150);
-//        cyberdomek4.setX(100);
-//        cyberdomek4.setY(100);
+        cyberdomek1.setFitWidth(150);
+        cyberdomek1.setFitHeight(150);
+        cyberdomek1.setX(650);
+        cyberdomek1.setY(400);
+        cyberdomek2.setFitWidth(150);
+        cyberdomek2.setFitHeight(150);
+        cyberdomek2.setX(800);
+        cyberdomek2.setY(100);
+        cyberdomek3.setFitWidth(150);
+        cyberdomek3.setFitHeight(150);
+        cyberdomek3.setX(400);
+        cyberdomek3.setY(550);
+        cyberdomek4.setFitWidth(150);
+        cyberdomek4.setFitHeight(150);
+        cyberdomek4.setX(100);
+        cyberdomek4.setY(100);
+//
+//        CyberDomek.generateTheFourDomki();
 
-        CyberDomek.generateTheFourDomki();
-
-        if (Main.cyberdomekList.size() >= 4) {
-            cyberdomek1 = Main.cyberdomekList.get(0);
-            cyberdomek2 = Main.cyberdomekList.get(1);
-            cyberdomek3 = Main.cyberdomekList.get(2);
-            cyberdomek4 = Main.cyberdomekList.get(3);
-        }
+//        if (Main.cyberdomekList.size() >= 4) {
+//            cyberdomek1 = Main.cyberdomekList.get(0);
+//            cyberdomek2 = Main.cyberdomekList.get(1);
+//            cyberdomek3 = Main.cyberdomekList.get(2);
+//            cyberdomek4 = Main.cyberdomekList.get(3);
+//        }
 
         Target target = new Target();
         target.setTargetToRandom(cyberdomekList);
@@ -257,6 +257,14 @@ public class Main extends Application {
             //zmiana na map4
             if(player.imageView.getY()  < 0){
                 whichMap = 4;
+                cyberdomek1.setX(200);
+                cyberdomek1.setY(200);
+                cyberdomek2.setX(800);
+                cyberdomek2.setX(100);
+                cyberdomek3.setX(600);
+                cyberdomek3.setY(600);
+                cyberdomek4.setX(800);
+                cyberdomek4.setY(700);
                 System.out.println("change to map 4");
                 map.setImage(map4);
                 player.imageView.setY(HEIGHT - player.imageView.getFitHeight());
