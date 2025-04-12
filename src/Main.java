@@ -54,6 +54,7 @@ public class Main extends Application {
     static boolean sPressed = false;
     static boolean dPressed = false;
     static boolean aPressed = false;
+    static Target target = new Target();
     static Phone phone = new Phone();
 
     static int whichMap = 1;
@@ -88,23 +89,14 @@ public class Main extends Application {
 
         cyberdomek1.setFitWidth(150);
         cyberdomek1.setFitHeight(150);
-        cyberdomek1.setX(650);
-        cyberdomek1.setY(400);
         cyberdomek2.setFitWidth(150);
         cyberdomek2.setFitHeight(150);
-        cyberdomek2.setX(800);
-        cyberdomek2.setY(100);
         cyberdomek3.setFitWidth(150);
         cyberdomek3.setFitHeight(150);
-        cyberdomek3.setX(400);
-        cyberdomek3.setY(200);
         cyberdomek4.setFitWidth(150);
         cyberdomek4.setFitHeight(150);
-        cyberdomek4.setX(100);
-        cyberdomek4.setY(100);
 
-        Target target = new Target();
-        target.setTargetToRandom(cyberdomekList);
+
 
         ImageView wyjdzZGry = new ImageView(new Image("file:images/wyjdzZGry.png"));
         wyjdzZGry.setLayoutX(1050);
@@ -148,7 +140,15 @@ public class Main extends Application {
             if (event.getCode() == KeyCode.D) {
                 dPressed = true;
             }
+            if (event.getCode() == KeyCode.Z) {
+                if (player.imageView.intersects(target.getBoundsInLocal())){
+                    GraKorkowa.Korki();
+                    System.out.println("Korki");
+                }
+
+            }
         });
+
         startScene.setOnKeyReleased(event -> {
             if (event.getCode() == KeyCode.W) {
                 wPressed = false;
@@ -184,7 +184,6 @@ public class Main extends Application {
             player.imageView.setX(player.imageView.getX() + dx);
             player.imageView.setY(player.imageView.getY() + dy);
 
-
             if (player.imageView.intersects(cyberdomek1.getBoundsInParent()) || player.imageView.intersects(cyberdomek2.getBoundsInParent()) || player.imageView.intersects(cyberdomek3.getBoundsInParent()) || player.imageView.intersects(cyberdomek4.getBoundsInParent())) {
                 player.imageView.setX(player.imageView.getX() - dx);
                 player.imageView.setY(player.imageView.getY() - dy);
@@ -193,10 +192,12 @@ public class Main extends Application {
                 dPressed = false;
                 aPressed = false;
             }
+
             changeMap();
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+        target.setTargetToRandom(cyberdomekList);
 
         ap1.getChildren().addAll(map, musicOnOffButton, wyjdzZGry,  target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
 
@@ -222,26 +223,25 @@ public class Main extends Application {
     }
 
     public static void changeMap(){
+        int oldMap = whichMap - 1;
 
         //dodać małą mapke zeby wiedziec gdzie jestesmy
         // adjust to player width/height zeby bylo idealnie
 
+
         //mapa 1 jesteśmy
 
         if(whichMap == 1){
-            System.out.println(player.imageView.getX());
             map.setImage(map1);
             //zmiana na map 2
             if(player.imageView.getX() > WIDTH){
                 whichMap = 2;
-                System.out.println("change to map 2");
                 map.setImage(map2);
                 player.imageView.setX(0);
             }
             //zmiana na map4
             if(player.imageView.getY() < 0){
                 whichMap = 4;
-                System.out.println("change to map 4");
                 map.setImage(map4);
                 player.imageView.setY(HEIGHT);
             }
@@ -295,9 +295,53 @@ public class Main extends Application {
                 player.imageView.setX(0);
             }
         }
+        if (whichMap == 1) {
+            cyberdomek1.setX(650);
+            cyberdomek1.setY(400);
+            cyberdomek2.setX(800);
+            cyberdomek2.setY(100);
+            cyberdomek3.setX(400);
+            cyberdomek3.setY(200);
+            cyberdomek4.setX(100);
+            cyberdomek4.setY(100);
+
+        }
+        else if (whichMap == 2) {
+            cyberdomek1.setX(400);
+            cyberdomek1.setY(300);
+            cyberdomek2.setX(900);
+            cyberdomek2.setY(400);
+            cyberdomek3.setX(100);
+            cyberdomek3.setY(100);
+            cyberdomek4.setX(200);
+            cyberdomek4.setY(650);
+        }
+        else if (whichMap == 3) {
+            cyberdomek1.setX(700);
+            cyberdomek1.setY(450);
+            cyberdomek2.setX(50);
+            cyberdomek2.setY(250);
+            cyberdomek3.setX(900);
+            cyberdomek3.setY(100);
+            cyberdomek4.setX(450);
+            cyberdomek4.setY(650);
+        }
+        else if (whichMap == 4) {
+            cyberdomek1.setX(100);
+            cyberdomek1.setY(300);
+            cyberdomek2.setX(700);
+            cyberdomek2.setY(600);
+            cyberdomek3.setX(1050);
+            cyberdomek3.setY(100);
+            cyberdomek4.setX(740);
+            cyberdomek4.setY(400);
+        }
 
         map.setFitWidth(1200);
         map.setFitHeight(800);
+    }
+    public static void targetUpdate(){
+
     }
 
 
