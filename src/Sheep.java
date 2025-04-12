@@ -48,12 +48,11 @@ public class Sheep extends ImageView{
         if (zawirusowana){
             //change image if zawirusowana
         }
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), event -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(12), event -> {
             randomWalk();
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
-
 
     }
 

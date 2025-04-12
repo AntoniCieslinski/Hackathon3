@@ -18,16 +18,21 @@ public class Target extends Rectangle {
 
     }
 
-    public void setTargetToRandom(List<ImageView> cyberdomekList){
-        int houseNumber =(int) (Math.random()*3);
+    public void setTargetToRandom(List<CyberDomek> cyberdomekList){
+//        int houseNumber =(int) (Math.random()*3);
+//
+//        ImageView targetDomek = cyberdomekList.get(houseNumber);
+//
+//        this.setX(targetDomek.getX() - offset);
+//        this.setY(targetDomek.getY() - offset);
 
-        ImageView targetDomek = cyberdomekList.get(houseNumber);
+        if (cyberdomekList.isEmpty()) return;
+
+        int houseNumber = (int) (Math.random() * cyberdomekList.size());
+        CyberDomek targetDomek = cyberdomekList.get(houseNumber);
 
         this.setX(targetDomek.getX() - offset);
         this.setY(targetDomek.getY() - offset);
-
-
-
 
     }
 

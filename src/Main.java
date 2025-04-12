@@ -26,31 +26,27 @@ public class Main extends Application {
     static Image musicOff = new Image("file:images/muzyka0.png");
     static Image musicOn = new Image("file:images/muzyka1.png");
     static boolean isMusicOn = true;
-//    static ImageView cyberdomek1 = new ImageView(new Image("file:images/cyberDomek.png"));
-//    static ImageView cyberdomek2 = new ImageView(new Image("file:images/cyberDomek.png"));
-//    static ImageView cyberdomek3 = new ImageView(new Image("file:images/cyberDomek.png"));
-//    static ImageView cyberdomek4 = new ImageView(new Image("file:images/cyberDomek.png"));
 
     static CyberDomek cyberdomek1 = new CyberDomek();
     static CyberDomek cyberdomek2 = new CyberDomek();
     static CyberDomek cyberdomek3 = new CyberDomek();
     static CyberDomek cyberdomek4 = new CyberDomek();
 
-    static List<ImageView> cyberdomekList = new ArrayList<>();
+//    static List<ImageView> cyberdomekList = new ArrayList<>();
 
-    static {
-        cyberdomekList.add(cyberdomek1);
-        cyberdomekList.add(cyberdomek2);
-        cyberdomekList.add(cyberdomek3);
-        cyberdomekList.add(cyberdomek4);
-    }
+    static List<CyberDomek> cyberdomekList = new ArrayList<>();
+//    static {
+//        cyberdomekList.add(cyberdomek1);
+//        cyberdomekList.add(cyberdomek2);
+//        cyberdomekList.add(cyberdomek3);
+//        cyberdomekList.add(cyberdomek4);
+//    }
 
     static AnchorPane ap1 = new AnchorPane();
-    static AnchorPane ap2 = new AnchorPane();
-    static AnchorPane ap3 = new AnchorPane();
-    static AnchorPane ap4 = new AnchorPane();
+
     static final int WIDTH = 1200;
     static final int HEIGHT = 800;
+
     static Stage stage;
     static Timeline timeline = new Timeline();
     static Scene startScene;
@@ -59,22 +55,21 @@ public class Main extends Application {
     static Sheep owca2;
     static Sheep owca3;
     static Sheep owca4;
+
     static boolean wPressed = false;
     static boolean sPressed = false;
     static boolean dPressed = false;
     static boolean aPressed = false;
+
     static Phone phone = new Phone();
+    static ImageView arrow = phone.Arrow();
 
     static int whichMap = 1;
-
     static Image map1 = new Image("file:images/mapa/1.png");
     static Image map2 = new Image("file:images/mapa/2.png");
     static Image map3 = new Image("file:images/mapa/3.png");
     static Image map4 = new Image("file:images/mapa/4.png");
-
     static ImageView map = new ImageView(map1);
-
-    static ImageView arrow = phone.Arrow();
 
     public static void main(String[] args) {
         launch(args);
@@ -83,10 +78,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-        owca1 = new Sheep((int) cyberdomek1.getX(), (int) cyberdomek1.getY());
-        owca2 = new Sheep((int) cyberdomek2.getX(), (int) cyberdomek2.getY());
-        owca3 = new Sheep((int) cyberdomek3.getX(), (int) cyberdomek3.getY());
-        owca4 = new Sheep((int) cyberdomek4.getX(), (int) cyberdomek4.getY());
 
         player = new Player(20, 20);
         Scene1();
@@ -98,28 +89,43 @@ public class Main extends Application {
 
     public void Scene1() {
 
+//        cyberdomek1.setFitWidth(150);
+//        cyberdomek1.setFitHeight(150);
+//        cyberdomek1.setX(650);
+//        cyberdomek1.setY(400);
+//
+//        cyberdomek2.setFitWidth(150);
+//        cyberdomek2.setFitHeight(150);
+//        cyberdomek2.setX(800);
+//        cyberdomek2.setY(100);
+//        cyberdomek3.setFitWidth(150);
+//        cyberdomek3.setFitHeight(150);
+//        cyberdomek3.setX(400);
+//        cyberdomek3.setY(200);
+//        cyberdomek4.setFitWidth(150);
+//        cyberdomek4.setFitHeight(150);
+//        cyberdomek4.setX(100);
+//        cyberdomek4.setY(100);
 
+        CyberDomek.generateTheFourDomki();
 
-        cyberdomek1.setFitWidth(150);
-        cyberdomek1.setFitHeight(150);
-        cyberdomek1.setX(650);
-        cyberdomek1.setY(400);
-
-        cyberdomek2.setFitWidth(150);
-        cyberdomek2.setFitHeight(150);
-        cyberdomek2.setX(800);
-        cyberdomek2.setY(100);
-        cyberdomek3.setFitWidth(150);
-        cyberdomek3.setFitHeight(150);
-        cyberdomek3.setX(400);
-        cyberdomek3.setY(200);
-        cyberdomek4.setFitWidth(150);
-        cyberdomek4.setFitHeight(150);
-        cyberdomek4.setX(100);
-        cyberdomek4.setY(100);
+        if (Main.cyberdomekList.size() >= 4) {
+            cyberdomek1 = Main.cyberdomekList.get(0);
+            cyberdomek2 = Main.cyberdomekList.get(1);
+            cyberdomek3 = Main.cyberdomekList.get(2);
+            cyberdomek4 = Main.cyberdomekList.get(3);
+        }
 
         Target target = new Target();
         target.setTargetToRandom(cyberdomekList);
+
+        //owce dodawanie
+        if (cyberdomekList.size() >= 4) {
+            owca1 = new Sheep((int) cyberdomekList.get(0).getX(), (int) cyberdomekList.get(0).getY());
+            owca2 = new Sheep((int) cyberdomekList.get(1).getX(), (int) cyberdomekList.get(1).getY());
+            owca3 = new Sheep((int) cyberdomekList.get(2).getX(), (int) cyberdomekList.get(2).getY());
+            owca4 = new Sheep((int) cyberdomekList.get(3).getX(), (int) cyberdomekList.get(3).getY());
+        }
 
         ImageView wyjdzZGry = new ImageView(new Image("file:images/wyjdzZGry.png"));
         wyjdzZGry.setLayoutX(1050);
@@ -344,9 +350,6 @@ public class Main extends Application {
 
     public static void playerPositionUpdate(int xPlayer, int yPlayer){
         if (stage.getScene().getRoot().equals(ap1)){
-        } else if (stage.getScene().getRoot().equals(ap2)){
-        } else if (stage.getScene().getRoot().equals(ap3)){
-        } else if (stage.getScene().getRoot().equals(ap4)){
         }
     }
 
