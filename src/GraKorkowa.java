@@ -2,6 +2,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -16,11 +17,12 @@ public class GraKorkowa {
 
     public static void Korki(){
         Text text = new Text("Turn all red");
-        Font font = new Font("Arial", 100);
-        text.setX(Main.WIDTH/2-text.getBoundsInLocal().getWidth()/2);
+        text.setFill(Color.RED);
+        Font font = new Font("Arial", 70);
+        text.setX(1000/2-text.getBoundsInLocal().getWidth()-200);
         text.setY(100);
         text.setFont(font);
-        
+
         Stage stage = new Stage();
         Scene scene;
         AnchorPane root = new AnchorPane();
@@ -53,8 +55,13 @@ public class GraKorkowa {
                 imageViews[finalI].setImage(current); // change image on click
             });
         }
+        if (korek1.getImage().equals(korekon)&&korek2.getImage().equals(korekon)&&korek3.getImage().equals(korekon)&&korek4.getImage().equals(korekon)){
+            text = new Text("Congrats!!!");
+            text.setFill(Color.GREEN);
+            root.getChildren().add(text);
+        }
 
-        root.getChildren().addAll(korek1,korek2,korek3,korek4);
+        root.getChildren().addAll(korek1,korek2,korek3,korek4, text);
 
 
         scene = new Scene(root, 1000, 800);

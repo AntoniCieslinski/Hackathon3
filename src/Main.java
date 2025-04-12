@@ -182,6 +182,11 @@ public class Main extends Application {
             if (event.getCode() == KeyCode.D) {
                 dPressed = false;
             }
+            if (event.getCode() == KeyCode.Z) {
+                if (player.imageView.intersects(target.getBoundsInLocal())){
+                    GraKorkowa.Korki();
+                }
+            }
         });
 
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(16), e -> {
