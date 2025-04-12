@@ -29,6 +29,9 @@ public class Sheep extends ImageView{
             this.index = index;
             this.x = x;
             this.y = y;
+
+            //this.x = (int) (x - 130);
+            //this.y = (int) (y - 130);
         }
         public static Direction changeDirection(Direction currDirection){
             return values()[(currDirection.index + 1) % 4];
@@ -43,8 +46,14 @@ public class Sheep extends ImageView{
     public Sheep(int x, int y) {
         super();
         setImage(image);
-        setX(x);
-        setY(y);
+        setX(x- image.getWidth()+30);
+        setY(y- image.getHeight());
+
+        int random = (int) (Math.random()*800);
+        for (int i = 0; i < random; i++) {
+            randomWalk();
+        }
+
         if (zawirusowana){
             //change image if zawirusowana
         }
@@ -77,7 +86,7 @@ public class Sheep extends ImageView{
         setX(getX() + direction.x);
         setY(getY() + direction.y);
         steps++;
-        if (steps >= 200) {
+        if (steps >= 230) {
             direction = Direction.changeDirection(direction);
             steps = 0;
         }
