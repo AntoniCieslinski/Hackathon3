@@ -48,12 +48,11 @@ public class Sheep extends ImageView{
         if (zawirusowana){
             //change image if zawirusowana
         }
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), event -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(12), event -> {
             randomWalk();
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
-
 
     }
 
@@ -66,7 +65,7 @@ public class Sheep extends ImageView{
 //    }
 
     public void detectPlayer(){
-//        if (Main.player.imageView.intersects(this)) {
+//        if (Main.player.imageView.intersects()) {
 //            return;
 //        }
         return;
@@ -78,7 +77,7 @@ public class Sheep extends ImageView{
         setX(getX() + direction.x);
         setY(getY() + direction.y);
         steps++;
-        if (steps >= 300) {
+        if (steps >= 200) {
             direction = Direction.changeDirection(direction);
             steps = 0;
         }
