@@ -50,6 +50,7 @@ public class Main extends Application {
     static Timeline timeline = new Timeline();
     static Scene startScene;
     static Player player;
+    static Sheep owca1;
     static boolean wPressed = false;
     static boolean sPressed = false;
     static boolean dPressed = false;
@@ -74,7 +75,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-
+        owca1 = new Sheep((int) cyberdomek1.getX(), (int) cyberdomek1.getY());
         player = new Player(20, 20);
         Scene1();
         stage.show();
@@ -198,7 +199,7 @@ public class Main extends Application {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
-        ap1.getChildren().addAll(map, musicOnOffButton, wyjdzZGry,  target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
+        ap1.getChildren().addAll(map, musicOnOffButton, wyjdzZGry,  target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow, owca1);
 
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
