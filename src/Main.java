@@ -162,14 +162,6 @@ public class Main extends Application {
 
         target.setTargetToRandom(cyberdomekList);
 
-        //owce dodawanie
-        if (cyberdomekList.size() >= 4) {
-            owca1 = new Sheep((int) cyberdomekList.get(0).getX(), (int) cyberdomekList.get(0).getY());
-            owca2 = new Sheep((int) cyberdomekList.get(1).getX(), (int) cyberdomekList.get(1).getY());
-            owca3 = new Sheep((int) cyberdomekList.get(2).getX(), (int) cyberdomekList.get(2).getY());
-            owca4 = new Sheep((int) cyberdomekList.get(3).getX(), (int) cyberdomekList.get(3).getY());
-        }
-
         ImageView wyjdzZGry = new ImageView(new Image("file:images/wyjdzZGry.png"));
         wyjdzZGry.setLayoutX(1050);
         wyjdzZGry.setLayoutY(7);
@@ -272,6 +264,14 @@ public class Main extends Application {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
+        //owce dodawanie
+        if (cyberdomekList.size() >= 4) {
+            owca1 = new Sheep((int) cyberdomekList.get(0).getX(), (int) cyberdomekList.get(0).getY());
+            owca2 = new Sheep((int) cyberdomekList.get(1).getX(), (int) cyberdomekList.get(1).getY());
+            owca3 = new Sheep((int) cyberdomekList.get(2).getX(), (int) cyberdomekList.get(2).getY());
+            owca4 = new Sheep((int) cyberdomekList.get(3).getX(), (int) cyberdomekList.get(3).getY());
+        }
+
         ap1.getChildren().addAll(map, musicOnOffButton, wyjdzZGry,  target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow, owca1, owca2, owca3, owca4);
 
         stage.setTitle("Ekran główny");
@@ -307,6 +307,15 @@ public class Main extends Application {
             if(player.imageView.getX() + player.imageView.getFitWidth() > WIDTH){
                 whichMap = 2;
                 layoutDomkow(2);
+                ap1.getChildren().removeAll(owca1, owca2, owca3, owca4);
+                if (cyberdomekList.size() >= 4) {
+                    owca1 = new Sheep((int) cyberdomekList.get(0).getX(), (int) cyberdomekList.get(0).getY());
+                    owca2 = new Sheep((int) cyberdomekList.get(1).getX(), (int) cyberdomekList.get(1).getY());
+                    owca3 = new Sheep((int) cyberdomekList.get(2).getX(), (int) cyberdomekList.get(2).getY());
+                    owca4 = new Sheep((int) cyberdomekList.get(3).getX(), (int) cyberdomekList.get(3).getY());
+                }
+                ap1.getChildren().addAll(owca1, owca2, owca3, owca4);
+                target.setTargetToRandom(cyberdomekList);
                 map.setImage(map2);
                 player.imageView.setX(player.imageView.getFitWidth());
             }
@@ -314,16 +323,15 @@ public class Main extends Application {
             if(player.imageView.getY()  < 0){
                 whichMap = 4;
                 layoutDomkow(4);
-                cyberdomek1.setX(200);
-                cyberdomek1.setY(200);
-                cyberdomek2.setX(800);
-                cyberdomek2.setX(100);
-                cyberdomek3.setX(600);
-                cyberdomek3.setY(600);
-                cyberdomek4.setX(800);
-                cyberdomek4.setY(700);
+                ap1.getChildren().removeAll(owca1, owca2, owca3, owca4);
+                if (cyberdomekList.size() >= 4) {
+                    owca1 = new Sheep((int) cyberdomekList.get(0).getX(), (int) cyberdomekList.get(0).getY());
+                    owca2 = new Sheep((int) cyberdomekList.get(1).getX(), (int) cyberdomekList.get(1).getY());
+                    owca3 = new Sheep((int) cyberdomekList.get(2).getX(), (int) cyberdomekList.get(2).getY());
+                    owca4 = new Sheep((int) cyberdomekList.get(3).getX(), (int) cyberdomekList.get(3).getY());
+                }
+                ap1.getChildren().addAll(owca1, owca2, owca3, owca4);
                 target.setTargetToRandom(cyberdomekList);
-
                 System.out.println("change to map 4");
                 map.setImage(map4);
                 player.imageView.setY(HEIGHT - player.imageView.getFitHeight());
@@ -345,6 +353,15 @@ public class Main extends Application {
             if(player.imageView.getX() < 0){
                 whichMap = 1;
                 layoutDomkow(1);
+                ap1.getChildren().removeAll(owca1, owca2, owca3, owca4);
+                if (cyberdomekList.size() >= 4) {
+                    owca1 = new Sheep((int) cyberdomekList.get(0).getX(), (int) cyberdomekList.get(0).getY());
+                    owca2 = new Sheep((int) cyberdomekList.get(1).getX(), (int) cyberdomekList.get(1).getY());
+                    owca3 = new Sheep((int) cyberdomekList.get(2).getX(), (int) cyberdomekList.get(2).getY());
+                    owca4 = new Sheep((int) cyberdomekList.get(3).getX(), (int) cyberdomekList.get(3).getY());
+                }
+                ap1.getChildren().addAll(owca1, owca2, owca3, owca4);
+                target.setTargetToRandom(cyberdomekList);
                 map.setImage(map1);
                 player.imageView.setX(WIDTH - player.imageView.getFitWidth() - 10);
             }
@@ -352,6 +369,15 @@ public class Main extends Application {
             if(player.imageView.getY() < 0){
                 whichMap = 3;
                 layoutDomkow(3);
+                ap1.getChildren().removeAll(owca1, owca2, owca3, owca4);
+                if (cyberdomekList.size() >= 4) {
+                    owca1 = new Sheep((int) cyberdomekList.get(0).getX(), (int) cyberdomekList.get(0).getY());
+                    owca2 = new Sheep((int) cyberdomekList.get(1).getX(), (int) cyberdomekList.get(1).getY());
+                    owca3 = new Sheep((int) cyberdomekList.get(2).getX(), (int) cyberdomekList.get(2).getY());
+                    owca4 = new Sheep((int) cyberdomekList.get(3).getX(), (int) cyberdomekList.get(3).getY());
+                }
+                ap1.getChildren().addAll(owca1, owca2, owca3, owca4);
+                target.setTargetToRandom(cyberdomekList);
                 map.setImage(map3);
                 player.imageView.setY(HEIGHT - player.imageView.getFitHeight());
             }
@@ -371,6 +397,15 @@ public class Main extends Application {
             if(player.imageView.getY() + player.imageView.getFitHeight()> HEIGHT){
                 whichMap = 2;
                 layoutDomkow(2);
+                ap1.getChildren().removeAll(owca1, owca2, owca3, owca4);
+                if (cyberdomekList.size() >= 4) {
+                    owca1 = new Sheep((int) cyberdomekList.get(0).getX(), (int) cyberdomekList.get(0).getY());
+                    owca2 = new Sheep((int) cyberdomekList.get(1).getX(), (int) cyberdomekList.get(1).getY());
+                    owca3 = new Sheep((int) cyberdomekList.get(2).getX(), (int) cyberdomekList.get(2).getY());
+                    owca4 = new Sheep((int) cyberdomekList.get(3).getX(), (int) cyberdomekList.get(3).getY());
+                }
+                ap1.getChildren().addAll(owca1, owca2, owca3, owca4);
+                target.setTargetToRandom(cyberdomekList);
                 map.setImage(map2);
                 player.imageView.setY( player.imageView.getFitHeight());
             }
@@ -378,6 +413,15 @@ public class Main extends Application {
             if(player.imageView.getX()< 0){
                 whichMap = 4;
                 layoutDomkow(4);
+                ap1.getChildren().removeAll(owca1, owca2, owca3, owca4);
+                if (cyberdomekList.size() >= 4) {
+                    owca1 = new Sheep((int) cyberdomekList.get(0).getX(), (int) cyberdomekList.get(0).getY());
+                    owca2 = new Sheep((int) cyberdomekList.get(1).getX(), (int) cyberdomekList.get(1).getY());
+                    owca3 = new Sheep((int) cyberdomekList.get(2).getX(), (int) cyberdomekList.get(2).getY());
+                    owca4 = new Sheep((int) cyberdomekList.get(3).getX(), (int) cyberdomekList.get(3).getY());
+                }
+                ap1.getChildren().addAll(owca1, owca2, owca3, owca4);
+                target.setTargetToRandom(cyberdomekList);
                 map.setImage(map4);
                 player.imageView.setX(WIDTH - player.imageView.getFitWidth());
             }
@@ -399,6 +443,15 @@ public class Main extends Application {
             if(player.imageView.getY() + player.imageView.getFitHeight() > HEIGHT){
                 whichMap = 1;
                 layoutDomkow(1);
+                ap1.getChildren().removeAll(owca1, owca2, owca3, owca4);
+                if (cyberdomekList.size() >= 4) {
+                    owca1 = new Sheep((int) cyberdomekList.get(0).getX(), (int) cyberdomekList.get(0).getY());
+                    owca2 = new Sheep((int) cyberdomekList.get(1).getX(), (int) cyberdomekList.get(1).getY());
+                    owca3 = new Sheep((int) cyberdomekList.get(2).getX(), (int) cyberdomekList.get(2).getY());
+                    owca4 = new Sheep((int) cyberdomekList.get(3).getX(), (int) cyberdomekList.get(3).getY());
+                }
+                ap1.getChildren().addAll(owca1, owca2, owca3, owca4);
+                target.setTargetToRandom(cyberdomekList);
                 map.setImage(map1);
                 player.imageView.setY(player.imageView.getFitHeight());
             }
@@ -406,6 +459,15 @@ public class Main extends Application {
             if(player.imageView.getX() + player.imageView.getFitWidth()> WIDTH){
                 whichMap = 3;
                 layoutDomkow(3);
+                ap1.getChildren().removeAll(owca1, owca2, owca3, owca4);
+                if (cyberdomekList.size() >= 4) {
+                    owca1 = new Sheep((int) cyberdomekList.get(0).getX(), (int) cyberdomekList.get(0).getY());
+                    owca2 = new Sheep((int) cyberdomekList.get(1).getX(), (int) cyberdomekList.get(1).getY());
+                    owca3 = new Sheep((int) cyberdomekList.get(2).getX(), (int) cyberdomekList.get(2).getY());
+                    owca4 = new Sheep((int) cyberdomekList.get(3).getX(), (int) cyberdomekList.get(3).getY());
+                }
+                ap1.getChildren().addAll(owca1, owca2, owca3, owca4);
+                target.setTargetToRandom(cyberdomekList);
                 map.setImage(map3);
                 player.imageView.setX(player.imageView.getFitWidth());
             }
@@ -425,13 +487,13 @@ public class Main extends Application {
     public static void layoutDomkow(int whichMap){
         if(whichMap == 4){
             cyberdomek1.setX(130);
-            cyberdomek1.setY(500);
+            cyberdomek1.setY(350);
 
             cyberdomek2.setX(300);
             cyberdomek2.setY(580);
 
             cyberdomek3.setX(700);
-            cyberdomek3.setY(100);
+            cyberdomek3.setY(50);
 
             cyberdomek4.setX(800);
             cyberdomek4.setY(400);
@@ -440,7 +502,7 @@ public class Main extends Application {
             cyberdomek1.setY(500);
 
             cyberdomek2.setX(400);
-            cyberdomek2.setY(100);
+            cyberdomek2.setY(70);
 
             cyberdomek3.setX(600);
             cyberdomek3.setY(480);
@@ -474,7 +536,6 @@ public class Main extends Application {
         }
 
     }
-
 
 
     public static void playerPositionUpdate(int xPlayer, int yPlayer){
