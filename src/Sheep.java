@@ -66,7 +66,7 @@ public class Sheep extends ImageView{
 //    }
 
     public void detectPlayer(){
-//        if (Main.player.imageView.intersects(this)) {
+//        if (Main.player.imageView.intersects()) {
 //            return;
 //        }
         return;
@@ -78,7 +78,7 @@ public class Sheep extends ImageView{
         setX(getX() + direction.x);
         setY(getY() + direction.y);
         steps++;
-        if (steps >= 300) {
+        if (steps >= 200) {
             direction = Direction.changeDirection(direction);
             steps = 0;
         }

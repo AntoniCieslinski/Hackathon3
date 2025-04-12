@@ -15,12 +15,10 @@ public class CyberDomek extends ImageView {
         this.setImage(image);
         this.setFitWidth(150);
         this.setFitHeight(150);
+//        Sheep sheep = new Sheep();
     }
 
-    public static void generateLocation(List<CyberDomek>){
-
-
-
+    public static void generateLocation(List<CyberDomek> domki){
     }
 
     public List<CyberDomek> generateTheFourDomki (){

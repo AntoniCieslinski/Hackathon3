@@ -56,6 +56,9 @@ public class Main extends Application {
     static Scene startScene;
     static Player player;
     static Sheep owca1;
+    static Sheep owca2;
+    static Sheep owca3;
+    static Sheep owca4;
     static boolean wPressed = false;
     static boolean sPressed = false;
     static boolean dPressed = false;
@@ -81,6 +84,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         owca1 = new Sheep((int) cyberdomek1.getX(), (int) cyberdomek1.getY());
+        owca2 = new Sheep((int) cyberdomek2.getX(), (int) cyberdomek2.getY());
+        owca3 = new Sheep((int) cyberdomek3.getX(), (int) cyberdomek3.getY());
+        owca4 = new Sheep((int) cyberdomek4.getX(), (int) cyberdomek4.getY());
+
         player = new Player(20, 20);
         Scene1();
         stage.show();
@@ -97,6 +104,7 @@ public class Main extends Application {
         cyberdomek1.setFitHeight(150);
         cyberdomek1.setX(650);
         cyberdomek1.setY(400);
+
         cyberdomek2.setFitWidth(150);
         cyberdomek2.setFitHeight(150);
         cyberdomek2.setX(800);
@@ -205,7 +213,7 @@ public class Main extends Application {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
-        ap1.getChildren().addAll(map, musicOnOffButton, wyjdzZGry,  target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow, owca1);
+        ap1.getChildren().addAll(map, musicOnOffButton, wyjdzZGry,  target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow, owca1, owca2, owca3, owca4);
 
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
