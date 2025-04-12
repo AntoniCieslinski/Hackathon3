@@ -26,10 +26,15 @@ public class Main extends Application {
     static Image musicOff = new Image("file:images/muzyka0.png");
     static Image musicOn = new Image("file:images/muzyka1.png");
     static boolean isMusicOn = true;
-    static ImageView cyberdomek1 = new ImageView(new Image("file:images/cyberDomek.png"));
-    static ImageView cyberdomek2 = new ImageView(new Image("file:images/cyberDomek.png"));
-    static ImageView cyberdomek3 = new ImageView(new Image("file:images/cyberDomek.png"));
-    static ImageView cyberdomek4 = new ImageView(new Image("file:images/cyberDomek.png"));
+//    static ImageView cyberdomek1 = new ImageView(new Image("file:images/cyberDomek.png"));
+//    static ImageView cyberdomek2 = new ImageView(new Image("file:images/cyberDomek.png"));
+//    static ImageView cyberdomek3 = new ImageView(new Image("file:images/cyberDomek.png"));
+//    static ImageView cyberdomek4 = new ImageView(new Image("file:images/cyberDomek.png"));
+
+    static CyberDomek cyberdomek1 = new CyberDomek();
+    static CyberDomek cyberdomek2 = new CyberDomek();
+    static CyberDomek cyberdomek3 = new CyberDomek();
+    static CyberDomek cyberdomek4 = new CyberDomek();
 
     static List<ImageView> cyberdomekList = new ArrayList<>();
 
@@ -50,6 +55,7 @@ public class Main extends Application {
     static Timeline timeline = new Timeline();
     static Scene startScene;
     static Player player;
+    static Sheep owca1;
     static boolean wPressed = false;
     static boolean sPressed = false;
     static boolean dPressed = false;
@@ -74,7 +80,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-
+        owca1 = new Sheep((int) cyberdomek1.getX(), (int) cyberdomek1.getY());
         player = new Player(20, 20);
         Scene1();
         stage.show();
@@ -84,6 +90,7 @@ public class Main extends Application {
     }
 
     public void Scene1() {
+
 
 
         cyberdomek1.setFitWidth(150);
@@ -198,7 +205,7 @@ public class Main extends Application {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
-        ap1.getChildren().addAll(map, musicOnOffButton, wyjdzZGry,  target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow);
+        ap1.getChildren().addAll(map, musicOnOffButton, wyjdzZGry,  target, cyberdomek1, cyberdomek2, cyberdomek3, cyberdomek4, player.imageView, phone, arrow, owca1);
 
         stage.setTitle("Ekran główny");
         stage.setScene(startScene);
@@ -334,4 +341,12 @@ public class Main extends Application {
         } else if (stage.getScene().getRoot().equals(ap4)){
         }
     }
+
+//    public void generateCyberDomekPosition(){
+//        double newX = Math.random()*1200;
+//        double newY = Math.random()*800;
+//
+//        if ()
+//
+//    }
 }
