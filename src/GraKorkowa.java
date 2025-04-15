@@ -16,10 +16,12 @@ public class GraKorkowa {
     static Image korekoff = new Image("file:images/KorekOff.png");
 
     public static void Korki(){
-        Text text = new Text("Turn all red");
+        Text text = new Text();
+        text.setText("Przełącz wszystkie na czerwone");
         text.setFill(Color.RED);
+        text.setWrappingWidth(700);
         Font font = new Font("Arial", 70);
-        text.setX(1000/2-text.getBoundsInLocal().getWidth()-200);
+        text.setX(200);
         text.setY(100);
         text.setFont(font);
 
@@ -37,9 +39,9 @@ public class GraKorkowa {
         korek2.setY(Main.HEIGHT/2);
         korek3.setY(Main.HEIGHT/2);
         korek4.setY(Main.HEIGHT/2);
-        korek2.setX(400);
-        korek3.setX(600);
-        korek4.setX(800);
+        korek2.setX(350);
+        korek3.setX(550);
+        korek4.setX(750);
 
         ImageView[] imageViews = { korek1, korek2, korek3, korek4 };
         for (int i = 0; i < imageViews.length; i++) {
@@ -53,16 +55,14 @@ public class GraKorkowa {
                     current = korekon;
                 }
                 imageViews[finalI].setImage(current); // change image on click
+
+                if (korek1.getImage().equals(korekon)&& korek2.getImage().equals(korekon)&& korek3.getImage().equals(korekon)&& korek4.getImage().equals(korekon)){
+                    text.setText("Gratulacje!!!");
+                    text.setFill(Color.GREEN);
+                }
             });
         }
-        if (korek1.getImage().equals(korekon)&&korek2.getImage().equals(korekon)&&korek3.getImage().equals(korekon)&&korek4.getImage().equals(korekon)){
-            text = new Text("Congrats!!!");
-            text.setFill(Color.GREEN);
-            root.getChildren().add(text);
-        }
-
         root.getChildren().addAll(korek1,korek2,korek3,korek4, text);
-
 
         scene = new Scene(root, 1000, 800);
         stage.setScene(scene);
